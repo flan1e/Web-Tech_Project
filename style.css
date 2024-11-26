@@ -54,7 +54,10 @@ header button:hover
     color: gold;
     cursor:pointer;
 }
-
+.main_page
+{
+    width: 98vw;
+}
 section
 {
     width: 90%;
@@ -100,7 +103,7 @@ section
 
 .coffee_list
 {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 5%;
@@ -173,8 +176,17 @@ section
     height: 30px;
     border-radius: 5px;
     border-color: gray;
-    background-color:brown ;
+    background: #CD4126CC;
+    font-size: 24px;
+    align-items: center;
+    text-align: center;
 }
+#add_button:hover
+{
+    color: white;
+    scale: 0.9;
+}
+
 
 .slider_selected
 {
@@ -190,4 +202,94 @@ section
 .slider_selected p
 {
     margin: auto auto;
+}
+
+#coffee_card_header
+{
+    justify-content: space-between;
+    height: 40px;
+}
+.coffee_card
+{
+    width: 95%;
+}
+#coffee_card_main
+{
+    display: flex;
+    flex-direction: row;
+}
+.coffee_card_image_case
+{
+    margin: auto 0;
+    width: 70%;
+}
+.coffee_card_image_case img
+{
+    margin: auto 0;
+    height: 40vw;
+    width: 80vh;
+}
+.coffee_card_main_info
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.coffee_card_main_info h1
+{
+    font-size: 42px;
+}
+.coffee_card_main_info p
+{
+    color: gray;
+}
+#coffee_card_buttons_section
+{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+#cup_type
+{
+    width: 113px;
+    height: 113px;
+    border-radius: 10px;
+}
+#extra_type, #milk_type
+{
+    border-radius: 20px;
+    width: 127px;
+    height: 40px;
+}
+#price
+{
+    font-size: 40px;
+    color: black;
+}
+.coffee_card_main_price
+{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+}
+.coffee_card_main_price input
+{
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+}
+#place_order_button
+{
+    width: 272px;
+    height: 77px;
+    border-radius: 50px;
+    background: #CD4126CC;
+    color: white;
+    font-size: 24px;
+}
+.hide
+{
+    display: none;
 }
