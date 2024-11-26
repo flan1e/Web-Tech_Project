@@ -13,7 +13,7 @@
         <header>
             <div class="header_main">
                 <img src="images/logo.png" alt="logo">
-                <input type="text" id="search">
+                <input type="text" id="search" placeholder="Search coffee...">
                 <button id="order_list">ORDER STATUS</button>
             </div>
         </header>
@@ -30,7 +30,7 @@
                     <p>Americano</p>
                 </div>
                 <div class="slider_current">
-                    <p>Expresso</p>
+                    <p>Espresso</p>
                 </div>
                 <div class="slider_current">
                     <p>Flat White</p>
@@ -40,80 +40,74 @@
             <div class="coffee_list">
                 <div class="coffee_box">
                     <img src="images/Cinnamon.png" alt="Cinnamon">
-                    <p>Cinnamon and Cacoa</p>
+                    <p class="coffee_name">Cinnamon and Cacoa</p>
                     <div id="price_box">
                         <p>99rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
                 <div class="coffee_box">
                     <img src="images/Drizzled.png" alt="Drizzled">
-                    <p>Drizzled with Caramel</p>
+                    <p class="coffee_name">Drizzled with Caramel</p>
                     <div id="price_box">
                         <p>99rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
                 <div class="coffee_box">
                     <img src="images/Bursting.png" alt="Bursting">
-                    <p>Bursting Blueberry</p>
+                    <p class="coffee_name">Bursting Blueberry</p>
                     <div id="price_box">
                         <p>99rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
                 <div class="coffee_box">
                     <img src="images/Dalgona.webp" id="resize" alt="Dalgona">
-                    <p>Dalgona Macha</p>
+                    <p class="coffee_name">Dalgona Matcha</p>
                     <div id="price_box">
                         <p>150rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
                 <div class="coffee_box">
                     <img src="images/coco_and_vanilla.jpg" id="resize" alt="Coco">
-                    <p>Coco & Vanilla Cream</p>
+                    <p class="coffee_name">Coco & Vanilla Cream</p>
                     <div id="price_box">
                         <p>199rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
                 <div class="coffee_box">
                     <img src="images/whipped_chocolate.jpg" id="resize" alt="Whipped">
-                    <p>Whipped chocolate</p>
+                    <p class="coffee_name">Whipped сhocolate</p>
                     <div id="price_box">
                         <p>99rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
                 <div class="coffee_box">
                     <img src="images/Thai_green.webp" id="resize" alt="Thai">
-                    <p>Thai green</p>
+                    <p class="coffee_name">Thai green</p>
                     <div id="price_box">
                         <p>99rub</p>
-                        <button id="add_button">+</button>
+                        <button class="add_button">+</button>
                     </div>
                 </div>
-                <div class="coffee_box"></div>
-                <div class="coffee_box"></div>
-                <div class="coffee_box"></div>
-                <div class="coffee_box"></div>
-                <div class="coffee_box"></div>
             </div>
         </section>
     </section>
-    <section class="coffee_card">
+    <section class="coffee_card hide">
         <header id="coffee_card_header">
             <button id="back_to_menu">⟵ BACK TO MENU</button>
-            <button id="order_list">ORDER STATUS</button>
         </header>
         <section id="coffee_card_main">
             <div class="coffee_card_image_case">
-                <img src="images/Image coffee.png" alt="coffee">
+                <img src="images/Image_coffee.png" alt="coffee">
             </div>
             <div class="coffee_card_main_info">
-                <h1>Cinnamon</h1>
-                <p>some info</p>
+                <h1 id="coffee_card_title">Coffee Name</h1> 
+                <p id="coffee_card_description">Description</p> 
                 <section id="coffee_card_buttons_section">
                     <button id="cup_type" value="0">SHORT</button>
                     <button id="cup_type" value="1">TALL</button>
@@ -131,14 +125,15 @@
                     <button id="milk_type" value="1">SOY MILK</button>
                     <button id="milk_type" value="2">ALMOND MILK</button>
                 </section>
-
                 <div class="coffee_card_main_price">
-                    <p id="price">99rub</p>
-                    <input type="number" id="coffee_card_main_coun">
-                </div><button id="place_order_button">PLACE ORDER</button>
+                    <p id="coffee_card_price"></p>
+                    <input type="number" id="coffee_card_main_count" value="1" placeholder="Кол-во">
+                </div>
+                <button id="place_order_button">PLACE ORDER</button>
             </div>
         </section>
     </section>
+    
 </body>
 
 <script src="script.js"></script>

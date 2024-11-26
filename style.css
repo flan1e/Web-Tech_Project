@@ -138,7 +138,7 @@ section
 {
     width: 90%;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 #resize
 {
@@ -170,7 +170,7 @@ section
 }
 
 
-#add_button
+.add_button
 {
     width: 30px;
     height: 30px;
@@ -280,6 +280,12 @@ section
     height: 30px;
     border-radius: 15px;
 }
+#coffee_card_price
+{
+    font-size: 32px;
+    color: black;
+    font-weight: 500;
+}
 #place_order_button
 {
     width: 272px;
@@ -288,6 +294,15 @@ section
     background: #CD4126CC;
     color: white;
     font-size: 24px;
+}
+#cup_type:hover, #extra_type:hover, #milk_type:hover
+{
+    scale: 0.9;
+}
+
+#place_order_button:hover
+{
+    scale: 0.9;
 }
 .hide
 {
