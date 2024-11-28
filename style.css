@@ -51,7 +51,7 @@ header button
 }
 header button:hover
 {
-    color: gold;
+    color: #AC8F64;
     cursor:pointer;
 }
 .main_page
@@ -93,7 +93,7 @@ section
 }
 .slider_current:hover
 {
-    color: gold;
+    color: #AC8F64;
 }
 #button_up, #button_down
 {
@@ -134,12 +134,13 @@ section
     cursor:pointer;
     font-size: 20px;
 }
-.coffee_box img
-{
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 20px;
+.coffee_box img {
+    width: 100%; 
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 20px; 
 }
+
 #resize
 {
     width: 252px;
