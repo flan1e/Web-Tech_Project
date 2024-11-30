@@ -156,8 +156,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const coffeePrice = coffeeCard.querySelector("#coffee_card_price");
     const backButton = document.querySelector("#back_to_menu");
     const mainWindow = document.querySelector(".main_page");
-    // const coffeeCard_img = document.querySelector(".coffee_card_image_case")
-    // сделаю потом, я устал
+    const orderStatus = document.querySelector(".order_status");
+    const orderListButton = document.querySelector("#order_list");
+    const orderStatusList = document.querySelector(".order_status_list");
+    const orderStatusTotal = document.querySelector(".order_status_total");
+    const hideOrderStatusButton = document.querySelector("#order_status_hide_btn");
+    const placeOrderButton = document.querySelector("#place_order_button");
+    const coffeeCountInput = document.querySelector("#coffee_card_main_count");
+
+    let order = [];
 
     const generateCoffeeCards = () => {
         coffeeData.forEach(coffee => {
@@ -173,9 +180,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
+            coffeeBox.querySelector(".add_button").addEventListener("click", (event) => {
+                event.stopPropagation(); // Останавливаем всплытие события, чтобы не открывать карточку (т.к. кнопка находится на самой карточке)
+                addToOrderFromList(coffee);
+            });
+
             coffeeBox.addEventListener("click", () => openCoffeeCard(coffee));
             coffeeListContainer.appendChild(coffeeBox);
         });
+    };
+
+    const addToOrderFromList = (coffee) => {
+        const count = 1;
+        const existingOrder = order.find(item => item.name === coffee.name);
+        if (existingOrder) {
+            existingOrder.count += count;
+        } else {
+            order.push({
+                ...coffee,
+                price: parsePrice(coffee.price), // Удаляем "rub" из цены
+                count,
+            });
+        }
+        // alert(`${coffee.name} добавлен в заказ (${count} шт).`);
+        updateOrderStatus();
     };
 
     const openCoffeeCard = (coffee) => {
@@ -184,9 +212,79 @@ document.addEventListener("DOMContentLoaded", () => {
         coffeePrice.textContent = coffee.price;
         coffeeCard.classList.remove("hide");
         mainWindow.classList.add("hide");
+
+        // Устанавливаем текущий кофе как активный
+        coffeeCard.dataset.currentCoffee = JSON.stringify(coffee);
     };
 
-    backButton.addEventListener("click", () => {
+    const addToOrder = () => {
+        const coffee = coffeeCard.dataset.currentCoffee
+            ? JSON.parse(coffeeCard.dataset.currentCoffee)
+            : null;
+
+        if (!coffee) {
+            alert("test");
+            return;
+        }
+
+        const count = parseInt(coffeeCountInput.value) || 1;
+
+        const existingOrder = order.find(item => item.name === coffee.name);
+        if (existingOrder) {
+            existingOrder.count += count;
+        } else {
+            order.push({
+                ...coffee,
+                price: parsePrice(coffee.price), // Удаляем "rub" из цены
+                count,
+            });
+        }
+
+        // alert(`${coffee.name} добавлен в заказ (${count} шт).`);
+        updateOrderStatus();
+    };
+
+
+    const parsePrice = (price) => parseInt(price.replace("rub", ""), 10);
+
+    const updateOrderStatus = () => {
+        orderStatusList.innerHTML = ""; // фикс копирования
+        let total = 0;
+    
+        order.forEach(item => {
+            const itemElement = document.createElement("div");
+            itemElement.className = "order_item";
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius:20px;">
+                <p>${item.name} x ${item.count}</p>
+                <p>${item.count * item.price} руб</p>
+            `;
+            orderStatusList.appendChild(itemElement);
+            total += item.count * item.price;
+        });
+    
+        const discount = Math.floor(total * 0.1); // int 
+        const finalTotal = total - discount;
+    
+        orderStatusTotal.innerHTML = `
+            <p>Сумма:${total} руб</p>
+            <p>Скидка 10%:${discount} руб</p>
+            <p>Итого:${finalTotal} руб</p>
+        `;
+    };
+    
+
+    orderListButton.addEventListener("click", () => { //на main
+        orderStatus.classList.remove("hide");
+    });
+
+    hideOrderStatusButton.addEventListener("click", () => { //внутри order_status
+        orderStatus.classList.add("hide");
+    });
+
+    placeOrderButton.addEventListener("click", addToOrder); // в карточке
+
+    backButton.addEventListener("click", () => { // в order
         coffeeCard.classList.add("hide");
         mainWindow.classList.remove("hide");
     });

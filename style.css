@@ -221,14 +221,20 @@ section
 }
 .coffee_card_image_case
 {
+    display: flex;
+    flex-direction: column;
     margin: auto 0;
+    align-items: center;
     width: 70%;
+    height: 90vh;
 }
 .coffee_card_image_case img
 {
     margin: auto 0;
-    height: 40vw;
-    width: 80vh;
+    height: 35vw;
+    width: 60vh;
+    border-radius: 20px;
+    object-fit: cover;
 }
 .coffee_card_main_info
 {
@@ -305,7 +311,78 @@ section
 {
     scale: 0.9;
 }
+
+.order_status {
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    width: 30vw; 
+    height: 100vh; 
+    background-color: white; 
+    border-left: 2px solid gray; 
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2); 
+    z-index: 10; 
+    display: flex;
+    flex-direction: column; 
+    overflow-y: auto; 
+}
+
+
+.order_status_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+.order_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+/* .order_status_list {
+    flex-grow: 1;
+    padding: 10px;
+} */
+.order_status_list {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.order_status_total {
+    position: absolute;
+    bottom: 0;
+    background-color: white; 
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    text-align: left; 
+}
+.order_status_header button
+{
+    border: none;
+    background: #F6F6F6;
+    height: 35px;
+    width: 40%;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+}
+.order_status_header button:hover
+{
+    background: #AC8F64;
+    color: white;
+}
 .hide
 {
     display: none;
+}
+
+.selected_button
+{
+    background: #CD4126CC;
+    color: white;
 }
