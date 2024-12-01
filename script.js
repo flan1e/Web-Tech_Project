@@ -210,9 +210,14 @@ document.addEventListener("DOMContentLoaded", () => {
         coffeeTitle.textContent = coffee.name;
         coffeeDescription.textContent = coffee.description;
         coffeePrice.textContent = coffee.price;
+    
+        const coffeeImage = coffeeCard.querySelector(".coffee_card_image_case img");
+        coffeeImage.src = coffee.image;
+        coffeeImage.alt = coffee.name;
+    
         coffeeCard.classList.remove("hide");
         mainWindow.classList.add("hide");
-
+    
         // Устанавливаем текущий кофе как активный
         coffeeCard.dataset.currentCoffee = JSON.stringify(coffee);
     };
