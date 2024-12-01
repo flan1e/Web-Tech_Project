@@ -341,7 +341,7 @@ section
     align-items: center;
     gap: 10px;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
 }
 /* .order_status_list {
     flex-grow: 1;

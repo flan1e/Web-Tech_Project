@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const itemElement = document.createElement("div");
             itemElement.className = "order_item";
             itemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius:20px;">
+                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius:20px; object-fit: cover;">
                 <p>${item.name} x ${item.count}</p>
                 <p>${item.count * item.price} руб</p>
             `;
