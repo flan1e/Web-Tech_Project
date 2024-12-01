@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     placeOrderButton.addEventListener("click", addToOrder); // в карточке
 
-    backButton.addEventListener("click", () => { // в order
+    backButton.addEventListener("click", () => { // в карточке
         coffeeCard.classList.add("hide");
         mainWindow.classList.remove("hide");
     });
