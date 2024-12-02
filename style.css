@@ -1,6 +1,9 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Rosarivo:ital@0;1&display=swap'); */
+
 * {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    /* font-family: "Rosarivo", serif; */
     box-sizing: border-box;
 }
 
@@ -57,6 +60,7 @@ header button:hover
 .main_page
 {
     width: 98vw;
+    height: 99vh;
 }
 section
 {
@@ -111,7 +115,7 @@ section
     margin-left: 5%;
     overflow-y: auto;
     /* border: 2px solid gray; */
-    height: 90vh;
+    height: 87vh;
 }
 .coffee_list::-webkit-scrollbar
 {
@@ -182,6 +186,7 @@ section
     align-items: center;
     text-align: center;
 }
+
 #add_button:hover
 {
     color: white;
@@ -337,6 +342,9 @@ section
     background-color: #f8f8f8;
 }
 .order_item {
+    margin-top: 5px;
+    border: 1px solid rgb(197, 196, 196);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -348,18 +356,51 @@ section
     padding: 10px;
 } */
 .order_status_list {
-    max-height: 80vh;
+    max-height: 76vh;
     overflow-y: auto;
 }
 
 .order_status_total {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     bottom: 0;
     background-color: white; 
     padding: 10px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
     width: 100%; 
     text-align: left; 
+    gap: 10px;
+}
+.order_status_price_box
+{
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+    left: 0;
+    justify-content: space-between;
+    border-bottom: 1px solid #0000001A;
+}
+.order_status_price_box p
+{
+    width: 50%;
+    color: #000000B2;
+}
+#price_parameter
+{
+    width: 30%;
+    text-align: end;
+    margin-right: 5%;
+}
+#order_status_price_box_total
+{
+    font-size: larger;
+    border-bottom: none;
+}
+#order_status_price_box_total p
+{
+    color: black;
 }
 .order_status_header button
 {

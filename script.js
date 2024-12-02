@@ -272,9 +272,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const finalTotal = total - discount;
     
         orderStatusTotal.innerHTML = `
-            <p>Сумма:${total} руб</p>
-            <p>Скидка 10%:${discount} руб</p>
-            <p>Итого:${finalTotal} руб</p>
+        <div class="order_status_price_box">
+            <p>Сумма:</p> 
+            <p id="price_parameter">${total} руб</p>
+        </div>
+        <div class="order_status_price_box">
+            <p>Скидка 10%:</p> 
+            <p id="price_parameter">${discount} руб</p>
+        </div>
+        <div class="order_status_price_box" id="order_status_price_box_total">
+            <p>Итого:</p> 
+            <p id="price_parameter">${finalTotal} руб</p>
+        </div>
         `;
     };
     
