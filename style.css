@@ -427,3 +427,70 @@ section
     background: #CD4126CC;
     color: white;
 }
+
+@media screen and (max-width:768px)
+{
+    *
+    {
+        font-size: 16px;
+    }
+    .slider_type
+    {
+        display: none;
+    }
+    .order_status{
+        width: 50%;
+    }
+    .coffee_box
+    {
+        width: 193px;
+        height: 330px;
+    }
+    #price_box
+    {
+        width: 60%
+    }
+}
+@media screen and (max-width:380px)
+{
+    *
+    {
+        font-size: 14px;
+    }
+    .coffee_box
+    {
+        width: 45%;
+        height: 50%;
+    }
+    #price_box
+    {
+        width: 80%;
+    }
+    .coffee_list
+    {
+        margin: 10px auto;
+    }
+    .order_status
+    {
+        width: 100%;
+    }
+    .coffee_card_image_case
+    {
+        display: none;
+    }
+    .coffee_card
+    {
+        width: 100%;
+    }
+    .coffee_card_main_info
+    {
+        margin: 10px auto;
+        width: 80%;
+        margin-left: 15%;
+        gap: 10px;
+    }
+    #cup_type
+    {
+        height: 45px;
+    }
+}
