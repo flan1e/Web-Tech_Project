@@ -163,10 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideOrderStatusButton = document.querySelector("#order_status_hide_btn");
     const placeOrderButton = document.querySelector("#place_order_button");
     const coffeeCountInput = document.querySelector("#coffee_card_main_count");
+    const searchInput = document.querySelector("#search");
 
     let order = [];
 
     const generateCoffeeCards = () => {
+        coffeeListContainer.innerHTML = ""; 
         coffeeData.forEach(coffee => {
             const coffeeBox = document.createElement("div");
             coffeeBox.className = "coffee_box";
@@ -181,7 +183,36 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             coffeeBox.querySelector(".add_button").addEventListener("click", (event) => {
-                event.stopPropagation(); // Останавливаем всплытие события, чтобы не открывать карточку (т.к. кнопка находится на самой карточке)
+                event.stopPropagation(); // Останавливаем всплытие события, чтобы не открывать карточку
+                addToOrderFromList(coffee);
+            });
+
+            coffeeBox.addEventListener("click", () => openCoffeeCard(coffee));
+            coffeeListContainer.appendChild(coffeeBox);
+        });
+    };
+
+    const filterCoffeeList = (searchText) => {
+        const filteredData = coffeeData.filter(coffee =>
+            coffee.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+
+        coffeeListContainer.innerHTML = ""; 
+        filteredData.forEach(coffee => {
+            const coffeeBox = document.createElement("div");
+            coffeeBox.className = "coffee_box";
+
+            coffeeBox.innerHTML = `
+                <img src="${coffee.image}" alt="${coffee.name}">
+                <p class="coffee_name">${coffee.name}</p>
+                <div id="price_box">
+                    <p>${coffee.price}</p>
+                    <button class="add_button">+</button>
+                </div>
+            `;
+
+            coffeeBox.querySelector(".add_button").addEventListener("click", (event) => {
+                event.stopPropagation();
                 addToOrderFromList(coffee);
             });
 
@@ -301,6 +332,11 @@ document.addEventListener("DOMContentLoaded", () => {
     backButton.addEventListener("click", () => { // в карточке
         coffeeCard.classList.add("hide");
         mainWindow.classList.remove("hide");
+    });
+
+    searchInput.addEventListener("input", (event) => {
+        const searchText = event.target.value;
+        filterCoffeeList(searchText);
     });
 
     generateCoffeeCards();
