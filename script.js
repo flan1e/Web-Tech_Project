@@ -164,15 +164,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const placeOrderButton = document.querySelector("#place_order_button");
     const coffeeCountInput = document.querySelector("#coffee_card_main_count");
     const searchInput = document.querySelector("#search");
+    const sliderButtons = document.querySelectorAll(".slider_current");
 
     let order = [];
 
     const generateCoffeeCards = () => {
         coffeeListContainer.innerHTML = ""; 
+        const coffeeTypes = {};
+
         coffeeData.forEach(coffee => {
+            if (!coffeeTypes[coffee.coffee_type]) {
+                coffeeTypes[coffee.coffee_type] = document.createElement("div");
+                coffeeTypes[coffee.coffee_type].id = coffee.coffee_type;
+                coffeeTypes[coffee.coffee_type].className = "coffee_type_section";
+                coffeeTypes[coffee.coffee_type].innerHTML = `<h2>${coffee.coffee_type}</h2>`;
+                coffeeListContainer.appendChild(coffeeTypes[coffee.coffee_type]);
+            }
+
             const coffeeBox = document.createElement("div");
             coffeeBox.className = "coffee_box";
-
             coffeeBox.innerHTML = `
                 <img src="${coffee.image}" alt="${coffee.name}">
                 <p class="coffee_name">${coffee.name}</p>
@@ -183,12 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             coffeeBox.querySelector(".add_button").addEventListener("click", (event) => {
-                event.stopPropagation(); // Останавливаем всплытие события, чтобы не открывать карточку
+                event.stopPropagation();
                 addToOrderFromList(coffee);
             });
 
             coffeeBox.addEventListener("click", () => openCoffeeCard(coffee));
-            coffeeListContainer.appendChild(coffeeBox);
+            coffeeTypes[coffee.coffee_type].appendChild(coffeeBox);
         });
     };
 
@@ -373,6 +383,16 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
             const selectedType = button.dataset.type;
             filterCoffeeByType(selectedType);
+        });
+    });
+
+    sliderButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const coffeeType = button.dataset.type;
+            const targetSection = document.getElementById(coffeeType);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: "smooth" });
+            }
         });
     });
     
