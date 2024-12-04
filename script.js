@@ -221,6 +221,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+    const filterCoffeeByType = (selectedType) => {
+        const filteredData = selectedType === "all" 
+            ? coffeeData 
+            : coffeeData.filter(coffee => coffee.type === selectedType);
+    
+        coffeeListContainer.innerHTML = ""; 
+    
+        filteredData.forEach(coffee => {
+            const coffeeBox = document.createElement("div");
+            coffeeBox.className = "coffee_box";
+    
+            coffeeBox.innerHTML = `
+                <img src="${coffee.image}" alt="${coffee.name}">
+                <p class="coffee_name">${coffee.name}</p>
+                <div id="price_box">
+                    <p>${coffee.price}</p>
+                    <button class="add_button">+</button>
+                </div>
+            `;
+    
+            coffeeBox.querySelector(".add_button").addEventListener("click", (event) => {
+                event.stopPropagation();
+                addToOrderFromList(coffee);
+            });
+    
+            coffeeBox.addEventListener("click", () => openCoffeeCard(coffee));
+            coffeeListContainer.appendChild(coffeeBox);
+        });
+    };
+
     const addToOrderFromList = (coffee) => {
         const count = 1;
         const existingOrder = order.find(item => item.name === coffee.name);
@@ -338,6 +368,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const searchText = event.target.value;
         filterCoffeeList(searchText);
     });
+
+    document.querySelectorAll(".filter_button").forEach(button => {
+        button.addEventListener("click", () => {
+            const selectedType = button.dataset.type;
+            filterCoffeeByType(selectedType);
+        });
+    });
+    
 
     generateCoffeeCards();
 });
