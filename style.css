@@ -210,6 +210,12 @@ section
     margin: auto auto;
 }
 
+.slider_type a
+{
+    color: black;
+    text-decoration: none;
+}
+
 #coffee_card_header
 {
     justify-content: space-between;
