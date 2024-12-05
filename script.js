@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "image": "images/Cinnamon.png",
             "price": "99rub",
             "description": "Ароматное сочетание свежеобжаренных кофейных зерен, обернутых в теплоту корицы и глубину какао.",
-            "coffee_type": "Cappuccino"
+            "coffee_type": "Cappuccino_1"
         },
         {
             "name": "Drizzled with Caramel",
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "image": "images/Dalgona.webp",
             "price": "150rub",
             "description": "Матча, королева чаев, взбивается до воздушной пенки и венчает нежное молоко, соединяясь с горчинкой сахара в чашке волшебства.",
-            "coffee_type": "Latte"
+            "coffee_type": "Latte_1"
         },
         {
             "name": "Coco & Vanilla Cream",
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "image": "images/Classic_Americano.jpg",
             "price": "99rub",
             "description": "Простота и элегантность: насыщенный эспрессо, разбавленный горячей водой, для любителей чистого вкуса.",
-            "coffee_type": "Americano"
+            "coffee_type": "Americano_1"
         },
         {
             "name": "Caramel Americano",
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "image": "images/Classic_Espresso.jpg",
             "price": "99rub",
             "description": "Насыщенный эспрессо с густой крема — настоящий выбор гурманов для мгновенной бодрости.",
-            "coffee_type": "Espresso"
+            "coffee_type": "Espresso_1"
         },
         {
             "name": "Macchiato Espresso",
@@ -138,14 +138,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "image": "images/Flat_White.jpg",
             "price": "99rub",
             "description": "Идеальный баланс эспрессо и молочной пены. Лаконичный и насыщенный.",
-            "coffee_type": "Flat White"
+            "coffee_type": "Flat_White_1"
         },
         {
             "name": "Spicy Flat White",
             "image": "images/Spicy_Flat_White.jpg",
             "price": "115rub",
             "description": "Пряный вкус специй и сливочная текстура — идеальный Flat White для холодных вечеров.",
-            "coffee_type": "Flat White"
+            "coffee_type": "Flat_White"
         }
     ];
 
@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         coffeeData.forEach(coffee => {
             const coffeeBox = document.createElement("div");
             coffeeBox.className = "coffee_box";
+            coffeeBox.id = coffee.coffee_type;
 
             coffeeBox.innerHTML = `
                 <img src="${coffee.image}" alt="${coffee.name}">
