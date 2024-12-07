@@ -164,6 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const placeOrderButton = document.querySelector("#place_order_button");
     const coffeeCountInput = document.querySelector("#coffee_card_main_count");
     const searchInput = document.querySelector("#search");
+    const buttonSections = document.querySelectorAll("#coffee_card_buttons_section");
+    const delete_button = document.querySelector("#delete_button");
 
     let order = [];
 
@@ -285,39 +287,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const parsePrice = (price) => parseInt(price.replace("rub", ""), 10);
 
     const updateOrderStatus = () => {
-        orderStatusList.innerHTML = ""; // фикс копирования
+        orderStatusList.innerHTML = ""; // Очищаем список перед обновлением
         let total = 0;
     
-        order.forEach(item => {
+        order.forEach((item, index) => {
             const itemElement = document.createElement("div");
             itemElement.className = "order_item";
             itemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius:20px; object-fit: cover;">
-                <p>${item.name} x ${item.count}</p>
-                <p>${item.count * item.price} руб</p>
+                <div>
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+                <div id="order_item_name_field">
+                    <p>${item.name}</p>
+                </div>
+                <div>
+                    <p id="order_item_count">x ${item.count}</p>
+                </div>
+                <div id="order_item_price">
+                    <p>${item.count * item.price} руб</p>
+                </div>
+                <div>
+                    <button class="delete_button" data-index="${index}">x</button>
+                </div>
             `;
             orderStatusList.appendChild(itemElement);
             total += item.count * item.price;
         });
     
-        const discount = Math.floor(total * 0.1); // int 
+        const deleteButtons = orderStatusList.querySelectorAll(".delete_button");
+        deleteButtons.forEach(button => {
+            button.addEventListener("click", (event) => {
+                const index = event.target.dataset.index; // Получаем индекс элемента
+                order.splice(index, 1); // Удаляем элемент из массива
+                updateOrderStatus(); 
+            });
+        });
+    
+        const discount = Math.floor(total * 0.1); // инт
         const finalTotal = total - discount;
     
         orderStatusTotal.innerHTML = `
-        <div class="order_status_price_box">
-            <p>Сумма:</p> 
-            <p id="price_parameter">${total} руб</p>
-        </div>
-        <div class="order_status_price_box">
-            <p>Скидка 10%:</p> 
-            <p id="price_parameter">${discount} руб</p>
-        </div>
-        <div class="order_status_price_box" id="order_status_price_box_total">
-            <p>Итого:</p> 
-            <p id="price_parameter">${finalTotal} руб</p>
-        </div>
+            <div class="order_status_price_box">
+                <p>Сумма:</p> 
+                <p id="price_parameter">${total} руб</p>
+            </div>
+            <div class="order_status_price_box">
+                <p>Скидка 10%:</p> 
+                <p id="price_parameter">${discount} руб</p>
+            </div>
+            <div class="order_status_price_box" id="order_status_price_box_total">
+                <p>Итого:</p> 
+                <p id="price_parameter">${finalTotal} руб</p>
+            </div>
         `;
     };
+    
     
 
     orderListButton.addEventListener("click", () => { //на main
@@ -338,6 +362,20 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.addEventListener("input", (event) => {
         const searchText = event.target.value;
         filterCoffeeList(searchText);
+    });
+
+    buttonSections.forEach(section => {
+        section.addEventListener("click", (event) => {
+            const target = event.target;
+
+            // Проверяем, является ли нажатый элемент кнопкой
+            if (target.tagName === "BUTTON") {
+                const buttons = section.querySelectorAll("button");
+                buttons.forEach(button => button.classList.remove("selected_button"));
+                //только нажатой
+                target.classList.add("selected_button");
+            }
+        });
     });
 
     generateCoffeeCards();
