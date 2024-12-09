@@ -15,11 +15,12 @@
                 <img src="images/logo.png" alt="logo">
                 <input type="text" id="search" placeholder="Search coffee...">
                 <button id="order_list">ORDER STATUS</button>
+                <span id="order_count" class="order_count">0</span>
             </div>
         </header>
         <section class="section_main">
             <div class="slider_type">
-                <button id="button_up">^</button>
+                <!-- <button id="button_up">^</button> -->
                 <a href="#Cappuccino_1">
                     <div class="slider_current">
                         <p>Cappuccino</p>
@@ -45,7 +46,7 @@
                         <p>Flat White</p>
                     </div>
                 </a>
-                <button id="button_down">⌄</button>
+                <!-- <button id="button_down">⌄</button> -->
             </div>
             <div class="coffee_list">
                 <!-- здесь были блоки с кофе -->
@@ -64,22 +65,23 @@
                 <h1 id="coffee_card_title">Coffee Name</h1>
                 <p id="coffee_card_description">Description</p>
                 <section id="coffee_card_buttons_section">
-                    <button id="cup_type" value="0">SHORT</button>
-                    <button id="cup_type" value="1">TALL</button>
-                    <button id="cup_type" value="2">GRANDE</button>
-                    <button id="cup_type" value="3">VENTI</button>
+                    <button id="cup_type" value="0" data-type="short">SHORT</button>
+                    <button id="cup_type" value="1" data-type="tall">TALL</button>
+                    <button id="cup_type" value="2" data-type="grande">GRANDE</button>
+                    <button id="cup_type" value="3" data-type="venti">VENTI</button>
                 </section>
                 <p>Extra</p>
                 <section id="coffee_card_buttons_section">
-                    <button id="extra_type" value="0">MILK</button>
-                    <button id="extra_type" value="1">SUGAR</button>
+                    <button id="extra_type" value="0" data-type="milk">MILK</button>
+                    <button id="extra_type" value="1" data-type="sugar">SUGAR</button>
                 </section>
                 <p>Milk type</p>
                 <section id="coffee_card_buttons_section">
-                    <button id="milk_type" value="0">OAT MILK</button>
-                    <button id="milk_type" value="1">SOY MILK</button>
-                    <button id="milk_type" value="2">ALMOND MILK</button>
+                    <button id="milk_type" value="0" data-type="oat">OAT MILK</button>
+                    <button id="milk_type" value="1" data-type="soy">SOY MILK</button>
+                    <button id="milk_type" value="2" data-type="almond">ALMOND MILK</button>
                 </section>
+                
                 <div class="coffee_card_main_price">
                     <p id="coffee_card_price"></p>
                     <input type="number" id="coffee_card_main_count" value="1" min="1" placeholder="Кол-во">

@@ -437,28 +437,28 @@ section {
     background: #CD4126CC;
     color: white;
 }
-.delete_button
-{
+
+.delete_button {
     border: 1px solid black;
     border-radius: 20px;
-    background-color:red;
+    background-color: red;
     color: white;
 }
-.delete_button:hover
-{
+
+.delete_button:hover {
     color: red;
     background-color: white;
 }
-#order_item_name_field
-{
+
+#order_item_name_field {
     width: 50%;
 }
-#order_item_price
-{
-    width:60px;
+
+#order_item_price {
+    width: 60px;
 }
-#order_item_count
-{
+
+#order_item_count {
     margin-left: 0;
     text-align: center;
     align-items: center;
@@ -466,6 +466,19 @@ section {
     color: white;
     border-radius: 15px;
     background-color: #CD4126CC;
+}
+
+.order_count
+{
+    text-align: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background: #AC8F64;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 
 @media screen and (max-width:1440px) {
@@ -480,19 +493,29 @@ section {
     * {
         font-size: 16px;
     }
-    .main_page
+
+    header {
+        width: 98%;
+    }
+    #order_list
     {
+        font-size: 18px;
+    }
+
+    .main_page {
         width: 100%;
     }
-    .section_main
-    {
+
+    .section_main {
         width: 100%;
     }
-    .coffee_list
-    {
+
+    .coffee_list {
+        width: 100%;
         margin: 0 auto;
-        gap: 3%;
+        gap: 2%;
     }
+
     .slider_type {
         display: none;
     }
@@ -502,8 +525,8 @@ section {
     }
 
     .coffee_box {
-        width: 193px;
-        height: 330px;
+        width: 300px;
+        height: 350px;
     }
 
     #price_box {
@@ -548,11 +571,11 @@ section {
     }
 
     .coffee_box p {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     #price_box {
-        width: 80%;
+        width: 50%;
     }
 
     .coffee_list {
@@ -594,16 +617,16 @@ section {
         width: 70px;
         height: 70px;
     }
-    .order_item p
-    {
+
+    .order_item p {
         font-size: 15px;
     }
-    #order_item_price
-    {
+
+    #order_item_price {
         width: 60px;
     }
-    #order_item_name_field
-    {
+
+    #order_item_name_field {
         width: 168px;
     }
 }
